@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 /**
  * Header component with logo and navigation
@@ -39,45 +40,47 @@ const Header = () => {
           </div>
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/about"
               className="text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               About Us
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/services"
               className="text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               Our Services
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/pricing"
               className="text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               Pricing
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/faq"
               className="text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               FAQ
-            </a>
+            </Link>
           </nav>
 
           {/* CTA Button */}
-          <Button 
-  size="lg" 
-  className="px-8 py-6 text-base font-medium rounded-full bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:bg-red-600 hidden md:inline-flex"
->
-  Get A Quote
-</Button>
+          <Link to="/get-quote">
+            <Button 
+              size="lg" 
+              className="px-8 py-6 text-base font-medium rounded-full bg-red-500 text-white shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:bg-red-600 hidden md:inline-flex"
+            >
+              Get A Quote
+            </Button>
+          </Link>
 
           
           {/* Mobile Menu Button */}

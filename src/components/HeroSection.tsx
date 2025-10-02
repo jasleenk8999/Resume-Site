@@ -33,14 +33,23 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="px-8 rounded-full border-2 border-red-500 bg-white text-red-500 font-semibold shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:bg-red-50"
+                onClick={() => {
+                  const element = document.getElementById('resume-packages');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 RESUME PACKAGES
               </Button>
               <Button 
                 size="lg" 
                 className="px-8 rounded-full bg-red-500 text-white font-semibold shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:bg-red-600"
+                asChild
               >
-                CONTACT US
+                <a href="/contact">
+                  CONTACT US
+                </a>
               </Button>
             </div>
           </div>
