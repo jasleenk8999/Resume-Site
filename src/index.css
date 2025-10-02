@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    
+    /* Primary - Red/Pink accent */
+    --primary: 345 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Hero Background - Pink gradient */
+    --hero-pink: 350 100% 88%;
+    --hero-pink-light: 350 100% 92%;
+    
+    /* Secondary - For buttons and accents */
+    --secondary: 350 100% 95%;
+    --secondary-foreground: 345 100% 50%;
+    
+    /* Muted text */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    
+    /* Card styles */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    
+    /* Accent colors */
+    --accent: 345 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Border and input */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 345 100% 50%;
+    
+    /* Rating badge - Teal/Cyan */
+    --rating-bg: 180 100% 90%;
+    --rating-text: 180 100% 30%;
+    
+    /* Stats badge - Light pink */
+    --stats-bg: 350 100% 95%;
+    --stats-text: 345 100% 40%;
+    
+    --radius: 8px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
