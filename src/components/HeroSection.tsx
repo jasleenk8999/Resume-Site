@@ -1,16 +1,14 @@
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
-  // Assuming these color codes are confirmed from Figma:
-  const GRADIENT_FROM = '#FECDD9';
-  const GRADIENT_TO = '#FFE2E7';
+  // Color constants for consistency
   const ACCENT_RED = 'text-red-600';
   const ACCENT_RED_HOVER = 'hover:bg-red-700';
   const ACCENT_SHADOW = 'shadow-[0_0_15px_rgba(239,68,68,0.6)]';
 
   return (
     // 1. CRITICAL FIX: Add overflow-x-hidden to the main section to clip any rogue elements.
-    <section className={`w-full bg-gradient-to-r from-[${GRADIENT_FROM}] to-[${GRADIENT_TO}] relative overflow-x-hidden`}>
+    <section className="w-full bg-gradient-to-r from-[#FECDD9] to-[#FFE2E7] relative overflow-x-hidden">
       {/* 
         FIX: Add pt-24 (or similar) to push content below a fixed header on mobile.
         You may need to adjust this value to match your header height.
@@ -29,24 +27,25 @@ const HeroSection = () => {
               <div className="relative inline-block">
                 <span className={`relative z-10 ${ACCENT_RED}`}>Deserves A Yes</span>
                 {/* 
-                  FIX: On mobile, SVG underline can cause overflow. 
-                  Hide SVGs on small screens, show on sm+.
+                  Show SVG underlines on all screen sizes, but scale them down and adjust width for mobile to prevent overflow.
                 */}
-                <div className="absolute top-full left-0 w-[110%] mt-1">
+                <div className="absolute top-full left-0 w-full xs:w-[110%] mt-1">
                   <div className="flex flex-col items-center -mt-1 space-y-[-4px]">
                     <svg
-                      width="110%"
+                      width="100%"
                       height="8"
                       viewBox="0 0 500 15"
-                      className={`${ACCENT_RED} -translate-x-[2%] hidden sm:block`}
+                      className={`${ACCENT_RED} -translate-x-[0%] xs:-translate-x-[2%]`}
+                      style={{ maxWidth: '110%' }}
                     >
                       <path d="M0,8 C100,0 400,0 500,8" stroke="currentColor" fill="none" strokeWidth="3" strokeLinecap="round" />
                     </svg>
                     <svg
-                      width="110%"
+                      width="100%"
                       height="10"
                       viewBox="0 0 500 15"
-                      className={`${ACCENT_RED} -translate-x-[2%] hidden sm:block`}
+                      className={`${ACCENT_RED} -translate-x-[0%] xs:-translate-x-[2%]`}
+                      style={{ maxWidth: '110%' }}
                     >
                       <path d="M0,12 C100,4 400,4 500,12" stroke="currentColor" fill="none" strokeWidth="3" strokeLinecap="round" />
                     </svg>
