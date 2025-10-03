@@ -7,21 +7,15 @@ const HeroSection = () => {
   const ACCENT_SHADOW = 'shadow-[0_0_15px_rgba(239,68,68,0.6)]';
 
   return (
-    // 1. CRITICAL FIX: Add overflow-x-hidden to the main section to clip any rogue elements.
-    <section className="w-full relative overflow-x-hidden" style={{ background: 'linear-gradient(to right, #FECDD9, #FFE2E7)' }}>
-      {/* 
-        FIX: Add pt-24 (or similar) to push content below a fixed header on mobile.
-        You may need to adjust this value to match your header height.
-        Also, reduce min-h-[600px] to min-h-[500px] for better mobile fit.
-      */}
-      <div className="container mx-auto px-0 min-h-[500px] max-h-[800px] flex items-center h-auto md:h-[70vh] pt-24 md:pt-0">
+    // Fix: Add overflow-x-clip to the main section and to the container to prevent horizontal scroll on all browsers.
+    <section
+      className="w-full relative overflow-x-clip"
+      style={{ background: 'linear-gradient(to right, #FECDD9, #FFE2E7)' }}
+    >
+      <div className="container mx-auto px-0 min-h-[500px] max-h-[800px] flex items-center h-auto md:h-[70vh] pt-24 md:pt-0 overflow-x-clip">
         <div className="grid grid-cols-1 md:grid-cols-2 h-full w-full">
-          {/* Left Content (No overflow issues here) */}
+          {/* Left Content */}
           <div className="space-y-7 z-10 flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-10 md:py-0">
-            {/* 
-              FIX: Make h1 text smaller and more responsive on mobile, 
-              and allow wrapping for long lines.
-            */}
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl lg:text-[64px] font-semibold leading-tight space-y-2 font-['Nunito Sans'] break-words">
               <div className="text-black">Your Resume</div>
               <div className="relative inline-block">
@@ -29,14 +23,14 @@ const HeroSection = () => {
                 {/* 
                   Show SVG underlines on all screen sizes, but scale them down and adjust width for mobile to prevent overflow.
                 */}
-                <div className="absolute top-full left-0 w-full xs:w-[110%] mt-1">
-                  <div className="flex flex-col items-center -mt-1 space-y-[-4px]">
+                <div className="absolute top-full left-0 w-full xs:w-[110%] max-w-full overflow-x-clip mt-1">
+                  <div className="flex flex-col items-center -mt-1 space-y-[-4px] w-full max-w-full overflow-x-clip">
                     <svg
                       width="100%"
                       height="8"
                       viewBox="0 0 500 15"
                       className={`${ACCENT_RED} -translate-x-[0%] xs:-translate-x-[2%]`}
-                      style={{ maxWidth: '110%' }}
+                      style={{ maxWidth: '100%' }}
                     >
                       <path d="M0,8 C100,0 400,0 500,8" stroke="currentColor" fill="none" strokeWidth="3" strokeLinecap="round" />
                     </svg>
@@ -45,7 +39,7 @@ const HeroSection = () => {
                       height="10"
                       viewBox="0 0 500 15"
                       className={`${ACCENT_RED} -translate-x-[0%] xs:-translate-x-[2%]`}
-                      style={{ maxWidth: '110%' }}
+                      style={{ maxWidth: '100%' }}
                     >
                       <path d="M0,12 C100,4 400,4 500,12" stroke="currentColor" fill="none" strokeWidth="3" strokeLinecap="round" />
                     </svg>
@@ -86,14 +80,13 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content */}
-          {/* 2. CRITICAL FIX: Added overflow-hidden to clip absolute children that exceed this column's width. */}
           <div className="relative h-[350px] xs:h-[400px] sm:h-[450px] md:h-full w-full mt-10 md:mt-0 overflow-hidden">
-            {/* Decorative concentric circles - 3. CRITICAL FIX: Replaced w-[120%] (which caused overflow) with contained percentages. */}
+            {/* Decorative concentric circles */}
             <div className="absolute inset-0 flex items-center justify-center" style={{ paddingTop: '20%' }}>
-              {/* Outer circle - Safe at w-[95%] of the parent column, relying on max-w for desktop scale */}
-              <div className="absolute w-[95%] max-w-[500px] aspect-square rounded-full bg-[#FECDD9] opacity-90"></div>
-              {/* Middle circle - Safe at w-[75%] of the parent column */}
-              <div className="absolute w-[75%] max-w-[400px] aspect-square rounded-full bg-[#FDE2E4] opacity-90"></div>
+              {/* Outer circle */}
+              <div className="absolute w-[95%] max-w-[500px] aspect-square rounded-full bg-[#FECDD9] opacity-90 left-1/2 -translate-x-1/2"></div>
+              {/* Middle circle */}
+              <div className="absolute w-[75%] max-w-[400px] aspect-square rounded-full bg-[#FDE2E4] opacity-90 left-1/2 -translate-x-1/2"></div>
             </div>
 
             {/* Hero Image */}
