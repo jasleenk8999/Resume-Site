@@ -25,7 +25,7 @@ const HeroSection = () => {
               <div className="text-black">Let's Make It Happen</div>
             </h1>
 
-            <p className="text-base sm:text-lg leading-7 max-w-xl font-['Nunito Sans']">
+            <p className="text-[16px] sm:text-lg leading-7 max-w-xl font-['Nunito Sans']">
               If Your Resume Isn't Getting Responses, It's Time For An Upgrade. Get An ATS-Optimized Resume Crafted By HR Experts To Help You Land More Interviews. Our Resumes Are Designed To Get Your Foot In The Door And Place Your Name At The Top Of The Shortlist.
             </p>
 

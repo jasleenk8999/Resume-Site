@@ -54,31 +54,31 @@ const Header = () => {
           <nav className="hidden lg:flex items-center gap-6"> 
             <Link
               to="/"
-              className="text-base font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
+              className="text-[18px] font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="text-base font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
+              className="text-[18px] font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
             >
               About Us
             </Link>
             <Link
               to="/services"
-              className="text-base font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
+              className="text-[18px] font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
             >
               Our Services
             </Link>
             <Link
               to="/pricing"
-              className="text-base font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
+              className="text-[18px] font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
             >
               Pricing
             </Link>
             <Link
               to="/faq"
-              className="text-base font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
+              className="text-[18px] font-medium text-gray-700 hover:text-red-600 transition-colors font-['Nunito Sans']"
             >
               FAQ
             </Link>

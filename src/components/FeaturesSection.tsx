@@ -39,10 +39,10 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-[#FFE2E7] text-black text-sm font-medium px-4 py-1.5 rounded-md mb-1">
+          <span className="inline-block bg-[#FFE2E7] text-black text-[18px] font-medium px-4 py-1.5 rounded-md mb-1">
             What You Get
           </span>
-          <h2 className="text-[22px] font-semibold text-gray-900 max-w-3xl mx-auto mt-4">
+          <h2 className="text-[26px] font-semibold text-gray-900 max-w-3xl mx-auto mt-4">
             You're Not Just Another Applicant And Your Resume Shouldn't Look Like One
           </h2>
         </div>
@@ -66,10 +66,10 @@ const FeaturesSection = () => {
                       }}
                     />
                   </div>
-                  <h3 className="text-[19px] font-normal text-gray-900 mb-4 text-left">
+                  <h3 className="text-[20px] font-normal text-gray-900 mb-4 text-left">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 flex-grow text-[17px] font-light text-left mt-1">
+                  <p className="text-gray-600 flex-grow text-[18px] font-light text-left mt-1">
                     {feature.description}
                   </p>
                 </div>
