@@ -8,7 +8,7 @@ const HeroSection = () => {
 
   return (
     // 1. CRITICAL FIX: Add overflow-x-hidden to the main section to clip any rogue elements.
-    <section className="w-full bg-gradient-to-r from-[#FECDD9] to-[#FFE2E7] relative overflow-x-hidden">
+    <section className="w-full relative overflow-x-hidden" style={{ background: 'linear-gradient(to right, #FECDD9, #FFE2E7)' }}>
       {/* 
         FIX: Add pt-24 (or similar) to push content below a fixed header on mobile.
         You may need to adjust this value to match your header height.
