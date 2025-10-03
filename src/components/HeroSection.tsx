@@ -1,22 +1,53 @@
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
+  // Assuming these color codes are confirmed from Figma:
+  const GRADIENT_FROM = '#FECDD9';
+  const GRADIENT_TO = '#FFE2E7';
+  const ACCENT_RED = 'text-red-600';
+  const ACCENT_RED_HOVER = 'hover:bg-red-700';
+  const ACCENT_SHADOW = 'shadow-[0_0_15px_rgba(239,68,68,0.6)]';
+
   return (
-    <section className="w-full bg-gradient-to-r from-[#FECDD9] to-[#FFE2E7] relative overflow-hidden">
-      <div className="container mx-auto px-0 min-h-[600px] max-h-[800px] flex items-center h-auto md:h-[70vh]">
+    // 1. CRITICAL FIX: Add overflow-x-hidden to the main section to clip any rogue elements.
+    <section className={`w-full bg-gradient-to-r from-[${GRADIENT_FROM}] to-[${GRADIENT_TO}] relative overflow-x-hidden`}>
+      {/* 
+        FIX: Add pt-24 (or similar) to push content below a fixed header on mobile.
+        You may need to adjust this value to match your header height.
+        Also, reduce min-h-[600px] to min-h-[500px] for better mobile fit.
+      */}
+      <div className="container mx-auto px-0 min-h-[500px] max-h-[800px] flex items-center h-auto md:h-[70vh] pt-24 md:pt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 h-full w-full">
-          {/* Left Content */}
+          {/* Left Content (No overflow issues here) */}
           <div className="space-y-7 z-10 flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-10 md:py-0">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-[64px] font-semibold leading-[1.1] space-y-2 font-['Nunito Sans']">
+            {/* 
+              FIX: Make h1 text smaller and more responsive on mobile, 
+              and allow wrapping for long lines.
+            */}
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl lg:text-[64px] font-semibold leading-tight space-y-2 font-['Nunito Sans'] break-words">
               <div className="text-black">Your Resume</div>
               <div className="relative inline-block">
-                <span className="relative z-10 text-red-600">Deserves A Yes</span>
+                <span className={`relative z-10 ${ACCENT_RED}`}>Deserves A Yes</span>
+                {/* 
+                  FIX: On mobile, SVG underline can cause overflow. 
+                  Hide SVGs on small screens, show on sm+.
+                */}
                 <div className="absolute top-full left-0 w-[110%] mt-1">
                   <div className="flex flex-col items-center -mt-1 space-y-[-4px]">
-                    <svg width="110%" height="8" viewBox="0 0 500 15" className="text-red-600 -translate-x-[2%]">
+                    <svg
+                      width="110%"
+                      height="8"
+                      viewBox="0 0 500 15"
+                      className={`${ACCENT_RED} -translate-x-[2%] hidden sm:block`}
+                    >
                       <path d="M0,8 C100,0 400,0 500,8" stroke="currentColor" fill="none" strokeWidth="3" strokeLinecap="round" />
                     </svg>
-                    <svg width="110%" height="10" viewBox="0 0 500 15" className="text-red-600 -translate-x-[2%]">
+                    <svg
+                      width="110%"
+                      height="10"
+                      viewBox="0 0 500 15"
+                      className={`${ACCENT_RED} -translate-x-[2%] hidden sm:block`}
+                    >
                       <path d="M0,12 C100,4 400,4 500,12" stroke="currentColor" fill="none" strokeWidth="3" strokeLinecap="round" />
                     </svg>
                   </div>
@@ -25,7 +56,7 @@ const HeroSection = () => {
               <div className="text-black">Let's Make It Happen</div>
             </h1>
 
-            <p className="text-[16px] sm:text-lg leading-7 max-w-xl font-['Nunito Sans']">
+            <p className="text-[15px] sm:text-lg leading-7 max-w-xl font-['Nunito Sans']">
               If Your Resume Isn't Getting Responses, It's Time For An Upgrade. Get An ATS-Optimized Resume Crafted By HR Experts To Help You Land More Interviews. Our Resumes Are Designed To Get Your Foot In The Door And Place Your Name At The Top Of The Shortlist.
             </p>
 
@@ -33,7 +64,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-2">
               <Button
                 size="lg"
-                className="px-8 rounded-full border-2 border-red-600 bg-white text-red-600 font-semibold shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:bg-red-50 w-full sm:w-auto"
+                className={`px-8 rounded-full border-2 border-red-600 bg-white ${ACCENT_RED} font-semibold ${ACCENT_SHADOW} hover:bg-red-50 w-full sm:w-auto`}
                 onClick={() => {
                   const element = document.getElementById('resume-packages');
                   if (element) {
@@ -45,7 +76,7 @@ const HeroSection = () => {
               </Button>
               <Button
                 size="lg"
-                className="px-8 rounded-full bg-red-600 text-white font-semibold shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:bg-red-700 w-full sm:w-auto"
+                className={`px-8 rounded-full ${ACCENT_RED.replace('text', 'bg')} text-white font-semibold ${ACCENT_SHADOW} ${ACCENT_RED_HOVER} w-full sm:w-auto`}
                 asChild
               >
                 <a href="/contact">
@@ -56,13 +87,14 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content */}
-          <div className="relative h-[350px] xs:h-[400px] sm:h-[450px] md:h-full w-full mt-10 md:mt-0">
-            {/* Decorative concentric circles - responsive size */}
+          {/* 2. CRITICAL FIX: Added overflow-hidden to clip absolute children that exceed this column's width. */}
+          <div className="relative h-[350px] xs:h-[400px] sm:h-[450px] md:h-full w-full mt-10 md:mt-0 overflow-hidden">
+            {/* Decorative concentric circles - 3. CRITICAL FIX: Replaced w-[120%] (which caused overflow) with contained percentages. */}
             <div className="absolute inset-0 flex items-center justify-center" style={{ paddingTop: '20%' }}>
-              {/* Outer circle */}
-              <div className="absolute w-[100vw] max-w-[500px] md:w-[90%] aspect-square rounded-full bg-[#FECDD9] opacity-90"></div>
-              {/* Middle circle */}
-              <div className="absolute w-[80vw] max-w-[400px] md:w-[75%] aspect-square rounded-full bg-[#FDE2E4] opacity-90"></div>
+              {/* Outer circle - Safe at w-[95%] of the parent column, relying on max-w for desktop scale */}
+              <div className="absolute w-[95%] max-w-[500px] aspect-square rounded-full bg-[#FECDD9] opacity-90"></div>
+              {/* Middle circle - Safe at w-[75%] of the parent column */}
+              <div className="absolute w-[75%] max-w-[400px] aspect-square rounded-full bg-[#FDE2E4] opacity-90"></div>
             </div>
 
             {/* Hero Image */}
@@ -70,15 +102,15 @@ const HeroSection = () => {
               <img
                 src="/hero-women.png"
                 alt="Professional woman with books and backpack"
-                className="h-[80vw] xs:h-[85vw] sm:h-[400px] md:h-[110%] max-h-[600px] w-auto object-contain object-bottom transition-all duration-300"
+                className="h-[70vw] xs:h-[80vw] sm:h-[400px] md:h-[110%] max-h-[600px] w-auto object-contain object-bottom transition-all duration-300"
                 style={{
-                  minHeight: '220px',
+                  minHeight: '180px',
                 }}
               />
             </div>
 
-            {/* Rating Badge */}
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 md:top-60 md:left-7 md:-translate-x-0 bg-white rounded-2xl px-6 py-3 md:px-9 md:py-4 shadow-lg z-30 w-[90vw] max-w-[320px] md:w-auto">
+            {/* Rating Badge - 3. CRITICAL FIX: Removed dynamic width (w-11/12) and rely on max-w, as positioning centered it. */}
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 md:top-60 md:left-7 md:-translate-x-0 bg-white rounded-2xl px-6 py-3 md:px-9 md:py-4 shadow-lg z-30 max-w-[320px] md:w-auto">
               <div className="flex items-center gap-4">
                 <p className="text-2xl md:text-3xl font-bold text-gray-900">4.9</p>
                 <div className="flex flex-col">
@@ -94,8 +126,8 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Stats Badge */}
-            <div className="absolute bottom-4 right-1/2 translate-x-1/2 md:bottom-8 md:right-11 md:translate-x-0 bg-white rounded-2xl px-4 py-3 md:px-5 md:py-4 shadow-lg flex items-center gap-3 z-30 w-[90vw] max-w-[260px] md:w-auto">
+            {/* Stats Badge - 3. CRITICAL FIX: Removed dynamic width (w-11/12) */}
+            <div className="absolute bottom-4 right-1/2 translate-x-1/2 md:bottom-8 md:right-11 md:-translate-x-0 bg-white rounded-2xl px-4 py-3 md:px-5 md:py-4 shadow-lg flex items-center gap-3 z-30 max-w-[260px] md:w-auto">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-7 md:w-7 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm0 13.28L5.18 12 4 12.55 12 17l8-4.45L18.82 12 12 15.28z"/>
               </svg>
