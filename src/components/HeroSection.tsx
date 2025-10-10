@@ -92,8 +92,9 @@ const HeroSection = () => {
               <Button
                 size="sm"
                 className={`px-6 sm:px-8 text-sm sm:text-base rounded-full border-2 border-red-600 bg-white ${ACCENT_RED} font-semibold ${ACCENT_SHADOW} hover:bg-red-50 w-auto mx-auto md:mx-0`}
+                asChild
               >
-                RESUME PACKAGES
+                <a href="/services">RESUME PACKAGES</a>
               </Button>
 
               <Button
