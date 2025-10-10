@@ -25,7 +25,9 @@ const Header = () => {
   return (
     <>
       {/* 1. HEADER BAR: Use py-4 instead of fixed h-20 for better fluid height */}
-      <header className="w-full bg-white border-b border-gray-100 sticky top-0 z-50 py-4">
+      <header className={`w-full sticky top-0 z-50 py-4 ${isMenuOpen ? '' : 'bg-white'}`}
+        style={isMenuOpen ? { backgroundColor: '#FFE2E7' } : {}}>
+
         <div className="container mx-auto px-6 h-full">
           <div className="flex items-center justify-between h-full">
             {/* Logo: Remains clean and simple */}
@@ -103,9 +105,10 @@ const Header = () => {
         />
         
         {/* Menu Panel - Height fixed to screen size for better scrolling */}
-        <div 
-          className="absolute top-0 left-0 right-0 bg-white shadow-xl transform transition-transform duration-300 ease-in-out"
+        <div
+          className="absolute top-0 left-0 right-0 shadow-xl transform transition-transform duration-300 ease-in-out"
           style={{
+            backgroundColor: '#FFE2E7',
             // Use top-0 and translate to slide down from the top, instead of stretching height
             transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
             height: '100vh',
@@ -125,7 +128,7 @@ const Header = () => {
               ))}
               
               {/* Mobile CTA: Ensured it sits well at the bottom of the visible screen */}
-              <div className="pt-4 mt-2 border-t border-gray-100">
+              <div className="pt-4">
                 <Link to="/get-quote" onClick={closeMenu} className="block">
                   <Button 
                     className={`w-full py-3 text-base font-medium rounded-lg ${ACCENT_RED} text-white ${ACCENT_SHADOW} ${ACCENT_RED_HOVER} transition-colors`}
