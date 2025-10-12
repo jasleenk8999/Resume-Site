@@ -30,27 +30,13 @@ const Header = () => {
 
         <div className="container mx-auto px-6 h-full">
           <div className="flex items-center justify-between h-full">
-            {/* Logo: Remains clean and simple */}
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 text-red-600">
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M8 16C8 16 12 8 20 8C24 8 26 10 26 13C26 16 24 18 20 18C16 18 12 20 12 24"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-extrabold text-gray-900 leading-none font-['Nunito Sans']">
-                  COMPANY
-                </span>
-                <span className="text-xs text-gray-500 leading-none mt-1 font-['Nunito Sans']">
-                  Business Tagline
-                </span>
-              </div>
+            {/* Logo and Company Info */}
+            <div className="flex items-center">
+              <img
+                src="/CompanyLogo.png"
+                alt="Company Logo"
+                className="w-32 h-16 object-contain"
+              />
             </div>
 
             {/* Desktop Navigation (Unchanged, remains hidden on mobile) */}
@@ -109,24 +95,64 @@ const Header = () => {
           className="absolute top-0 left-0 right-0 shadow-xl transform transition-transform duration-300 ease-in-out"
           style={{
             backgroundColor: '#FFE2E7',
-            // Use top-0 and translate to slide down from the top, instead of stretching height
             transform: isMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
             height: '100vh',
           }}
         >
           <div className="h-full overflow-y-auto pt-20"> {/* Add padding for the fixed header height */}
             <nav className="flex flex-col p-6 space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="text-lg font-medium text-gray-700 hover:text-red-600 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors"
-                  onClick={closeMenu}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              
+              {navLinks.map((link) => {
+                // Define icon source and alt text for each nav item that should have an icon
+                let iconSrc = "";
+                let iconAlt = "";
+
+                if (link.label === "Home") {
+                  iconSrc = "/Home.png";
+                  iconAlt = "Home";
+                } else if (link.label === "About Us") {
+                  iconSrc = "/AboutUs.png";
+                  iconAlt = "About Us";
+                } else if (link.label === "FAQ") {
+                  iconSrc = "/FAQ.png";
+                  iconAlt = "FAQ";
+                } else if (
+                  link.label === "Pricing" ||
+                  link.label === "Prices"
+                ) {
+                  iconSrc = "/Pricing.png";
+                  iconAlt = "Pricing";
+                } else if (
+                  link.label === "Our Services" ||
+                  link.label === "Services" ||
+                  link.label.toLowerCase().includes("service")
+                ) {
+                  iconSrc = "/OurServices.png";
+                  iconAlt = "Our Services";
+                }
+
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="text-lg font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors text-gray-700 hover:text-red-600"
+                    onClick={closeMenu}
+                  >
+                    {iconSrc ? (
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={iconSrc}
+                          alt={iconAlt}
+                          className="w-5 h-5"
+                        />
+                        <span>{link.label}</span>
+                      </div>
+                    ) : (
+                      link.label
+                    )}
+                  </Link>
+                );
+              })}
+
               {/* Mobile CTA: Ensured it sits well at the bottom of the visible screen */}
               <div className="pt-4">
                 <Link to="/get-quote" onClick={closeMenu} className="block">

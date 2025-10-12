@@ -109,8 +109,8 @@ const HeroSection = () => {
             {/* Mobile Image - Only show in mobile view, below Contact Us button */}
             <div className="block md:hidden flex justify-center -mt-32">
               <img
-                src="/mobileview.png"
-                alt="Professional woman with books and backpack"
+                src="/HeroImage.png"
+                alt="Hero Image"
                 className="h-[270px] w-auto object-contain"
                 style={{ marginTop: '15px' }}
               />
@@ -119,101 +119,15 @@ const HeroSection = () => {
           {/* End of Left Content */}
 
           {/* Right Content - Hidden in mobile, visible in desktop */}
-          <div className="hidden md:block relative hs-[350px] xs:h-[400px] sm:h-[450px] md:h-full w-full mt-10 md:mt-0 overflow-hidden flex flex-col">
-            {/* Move image and circles ABOVE the badges */}
-            <div className="flex flex-col items-center justify-end h-full w-full md:block md:contents order-1" style={{margin: "-20px"
-            }}>
-              {/* Decorative concentric circles and Hero Image (mobile: stacked, md+: absolutely positioned) */}
-              <div className="relative w-full h-[220px] xs:h-[260px] sm:h-[320px] md:absolute md:inset-0 md:h-full md:w-full flex items-end justify-center z-10">
-                {/* Circles */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ paddingTop: '20%' }}>
-                  {/* Outer circle */}
-                  <div className="absolute w-[95%] max-w-[500px] aspect-square rounded-full bg-[#FECDD9] opacity-90 left-1/2 -translate-x-1/2"></div>
-                  {/* Middle circle */}
-                  <div className="absolute w-[75%] max-w-[400px] aspect-square rounded-full bg-[#FDE2E4] opacity-90 left-1/2 -translate-x-1/2"></div>
-                </div>
-                {/* Hero Image */}
-                <div className="relative flex items-end justify-center z-20 w-full h-full">
-                    <img
-                      src="/hero-women.png"
-                      alt="Professional woman with books and backpack"
-                      className="h-[55vw] xs:h-[65vw] sm:h-[400px] md:h-[110%] max-h-[600px] w-auto object-contain object-bottom transition-all duration-300 -mt-6 sm:-mt-8 md:mt-0"
-                      style={{
-                      minHeight: '140px',
-                      }}
-                     />
-                    </div>
-
-              </div>
-            </div>
-
-            {/* Rating Badge */}
-            <div className="
-              absolute
-              left-1/2
-              -translate-x-1/2
-              top-2
-              md:top-60
-              md:left-7
-              md:-translate-x-0
-              bg-white
-              rounded-2xl
-              px-4 py-2
-              md:px-9 md:py-4
-              shadow-lg
-              z-30
-              max-w-[320px]
-              md:w-auto
-              flex
-              items-center
-              gap-3
-              text-center
-              order-2
-            ">
-              <div className="flex items-center gap-2 md:gap-4">
-                <p className="text-xl xs:text-2xl md:text-3xl font-bold text-gray-900">4.9</p>
-                <div className="flex flex-col items-start">
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-[11px] xs:text-xs text-gray-500 mt-1">Instructor Rating</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats Badge */}
-            <div className="
-              absolute
-              left-1/2
-              -translate-x-1/2
-              bottom-2
-              md:bottom-8
-              md:right-11
-              md:left-auto
-              md:-translate-x-0
-              bg-white
-              rounded-2xl
-              px-3 py-2
-              md:px-5 md:py-4
-              shadow-lg
-              flex items-center gap-2 md:gap-3
-              z-30
-              max-w-[220px]
-              md:max-w-[260px]
-              md:w-auto
-              text-center
-            ">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-7 md:w-7 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm0 13.28L5.18 12 4 12.55 12 17l8-4.45L18.82 12 12 15.28z"/>
-              </svg>
-              <div className="flex flex-col items-start">
-                <p className="text-xl xs:text-2xl md:text-3xl font-bold text-gray-900 leading-none">260+</p>
-                <p className="text-[11px] xs:text-xs text-gray-500 leading-tight">Online Resume Created</p>
-              </div>
+          <div className="hidden md:block relative w-full h-full min-h-[300px] xs:min-h-[350px] sm:min-h-[400px] md:min-h-[500px] mt-10 md:mt-0">
+            {/* Hero Image */}
+            <div className="absolute inset-0 flex items-end justify-center">
+              <img
+                src="/HeroImage.png"
+                alt="Hero Image"
+                className="max-h-full w-auto object-contain"
+                style={{ display: 'block', marginBottom: '0' }}
+              />
             </div>
           </div>
           {/* End of Right Content */}
